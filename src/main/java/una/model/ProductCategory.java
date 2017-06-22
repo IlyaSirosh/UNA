@@ -3,14 +3,12 @@ package una.model;
 /**
  * Created by Illya on 6/22/17.
  */
-public class Dish {
+public class ProductCategory {
 
     private Long id;
     private String name;
-    private DishCategory category;
+    private ProductCategory parent;
     private String description;
-    private Nutrients nutrients;
-
 
     public Long getId() {
         return id;
@@ -28,12 +26,12 @@ public class Dish {
         this.name = name;
     }
 
-    public DishCategory getCategory() {
-        return category;
+    public ProductCategory getParent() {
+        return parent;
     }
 
-    public void setCategory(DishCategory category) {
-        this.category = category;
+    public void setParent(ProductCategory parent) {
+        this.parent = parent;
     }
 
     public String getDescription() {
@@ -42,13 +40,5 @@ public class Dish {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Nutrients getNutrients() {
-        return nutrients;
-    }
-
-    public void setNutrients(Nutrients nutrients) {
-        this.nutrients = nutrients;
     }
 }

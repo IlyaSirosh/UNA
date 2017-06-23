@@ -1,14 +1,22 @@
 package una.model;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Illya on 6/22/17.
  */
+@Entity
 public class CustomDish extends Dish{
 
+
+
+    @ElementCollection
+    @CollectionTable(name = "custom_dish_ingredient", joinColumns=@JoinColumn(name = "dish_id"))
     private List<Ingredient> ingredients;
+
+    @ManyToOne
     private User user;
 
     public List<Ingredient> getIngredients() {

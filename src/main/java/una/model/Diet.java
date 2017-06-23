@@ -1,16 +1,28 @@
 package una.model;
 
+import javax.persistence.*;
+
 /**
  * Created by Illya on 6/22/17.
  */
+@Entity
 public class Diet {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(length = 30)
     private String name;
+
     private String description;
-    private DailyPlan dailyPlan;
-    private WeeklyPlan weeklyPlan;
+
+    @OneToOne
+    private TemplateDailyPlan dailyPlan;
+
+    @OneToOne
+    private TemplateWeeklyPlan weeklyPlan;
+
     private Integer duration;
 
     public Long getId() {
@@ -37,19 +49,19 @@ public class Diet {
         this.description = description;
     }
 
-    public DailyPlan getDailyPlan() {
+    public TemplateDailyPlan getDailyPlan() {
         return dailyPlan;
     }
 
-    public void setDailyPlan(DailyPlan dailyPlan) {
+    public void setDailyPlan(TemplateDailyPlan dailyPlan) {
         this.dailyPlan = dailyPlan;
     }
 
-    public WeeklyPlan getWeeklyPlan() {
+    public TemplateWeeklyPlan getWeeklyPlan() {
         return weeklyPlan;
     }
 
-    public void setWeeklyPlan(WeeklyPlan weeklyPlan) {
+    public void setWeeklyPlan(TemplateWeeklyPlan weeklyPlan) {
         this.weeklyPlan = weeklyPlan;
     }
 

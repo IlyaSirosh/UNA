@@ -1,13 +1,21 @@
 package una.model;
 
+import javax.persistence.*;
+
 /**
  * Created by Illya on 6/22/17.
  */
+@Entity
 public class DishCategory {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(length = 30)
     private String name;
-    private String decription;
+
+    private String description;
 
     public Long getId() {
         return id;
@@ -25,11 +33,11 @@ public class DishCategory {
         this.name = name;
     }
 
-    public String getDecription() {
-        return decription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

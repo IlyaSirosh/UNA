@@ -1,12 +1,21 @@
 package una.model;
 
+import javax.persistence.*;
+
 /**
  * Created by Illya on 6/22/17.
  */
+
+@Entity
 public class Manufacturer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(length = 30)
     private String name;
+
     private String description;
 
     public Long getId() {

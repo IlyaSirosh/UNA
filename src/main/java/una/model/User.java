@@ -1,10 +1,7 @@
 package una.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.sql.Date;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Illya on 6/20/17.
@@ -15,12 +12,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String email;
+
+    @Column(length = 20)
     private String nickname;
+
+    @Column(length = 10)
     private String sex;
+
+    @Temporal(TemporalType.DATE)
     private Date birth;
-    private String password;
+
 
     public Long getId() {
         return id;
@@ -62,11 +64,5 @@ public class User {
         this.birth = birth;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

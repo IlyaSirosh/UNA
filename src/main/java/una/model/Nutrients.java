@@ -1,8 +1,12 @@
 package una.model;
 
+import javax.persistence.Embeddable;
+
 /**
  * Created by Illya on 6/22/17.
  */
+
+@Embeddable
 public class Nutrients {
 
     private Double carbohydrates;
@@ -10,14 +14,6 @@ public class Nutrients {
     private Double proteins;
     private Double calories;
 
-    public Nutrients(){}
-
-    public Nutrients(Double carbohydrates, Double fats, Double proteins, Double calories) {
-        this.carbohydrates = carbohydrates;
-        this.fats = fats;
-        this.proteins = proteins;
-        this.calories = calories;
-    }
 
     public Double getCarbohydrates() {
         return carbohydrates;

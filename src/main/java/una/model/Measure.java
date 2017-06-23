@@ -1,13 +1,24 @@
 package una.model;
 
+import javax.persistence.*;
+
 /**
  * Created by Illya on 6/22/17.
  */
+
+@Entity
 public class Measure {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @ManyToOne
     private MeasureType type;
+
+    @ManyToOne
     private Unit unit;
+
     private Double value;
 
     public Long getId() {

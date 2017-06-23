@@ -1,15 +1,27 @@
 package una.model;
 
+import javax.persistence.*;
+
 /**
  * Created by Illya on 6/22/17.
  */
-public class Dish {
 
-    private Long id;
-    private String name;
-    private DishCategory category;
-    private String description;
-    private Nutrients nutrients;
+@MappedSuperclass
+public abstract class Dish  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected Long id;
+
+    @Column(length = 30)
+    protected String name;
+
+    @ManyToOne
+    protected DishCategory category;
+
+    protected String description;
+    @Embedded
+    protected Nutrients nutrients;
 
 
     public Long getId() {

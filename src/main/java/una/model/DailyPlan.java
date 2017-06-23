@@ -1,16 +1,22 @@
 package una.model;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
 /**
  * Created by Illya on 6/22/17.
  */
-public class DailyPlan {
 
-    private Long id;
-    private List<Meal> meals;
-    private List<Measure> measures;
+@MappedSuperclass
+public abstract class DailyPlan {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected Long id;
+
+    @OneToMany
+    protected List<Meal> meals;
 
 
     public Long getId() {
@@ -29,11 +35,4 @@ public class DailyPlan {
         this.meals = meals;
     }
 
-    public List<Measure> getMeasures() {
-        return measures;
-    }
-
-    public void setMeasures(List<Measure> measures) {
-        this.measures = measures;
-    }
 }

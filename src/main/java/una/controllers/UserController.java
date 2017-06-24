@@ -1,12 +1,15 @@
 package una.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import una.model.User;
 import una.repositories.UserRepository;
+import una.security.jwt.JwtTokenUtil;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Illya on 6/21/17.
@@ -19,11 +22,27 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping
-    @RequestMapping("/by/email/{email}")
-    public User getUserByEmail(@PathVariable("email")String email){
+    @Value("${jwt.header}")
+    private String tokenHeader;
 
-        return userRepository.findByEmail(email);
+    @Autowired
+    private JwtTokenUtil tokenUtil;
+
+    @ModelAttribute("user")
+    public User getUser(HttpServletRequest request){
+
+        String token = request.getHeader(tokenHeader);
+        String nickname = tokenUtil.getUsernameFromToken(token);
+
+        return userRepository.findByNickname(nickname);
+    }
+
+
+    @GetMapping
+    public ResponseEntity<?> getUserInfo(@ModelAttribute("user") User user){
+
+        return ResponseEntity.ok(user);
+
     }
 
 }

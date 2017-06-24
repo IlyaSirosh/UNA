@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ProjectUNA_1" target="1.6" />
-      <module name="UNA" target="1.6" />
+      <module name="UNA" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

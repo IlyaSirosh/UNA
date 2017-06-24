@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"/>-->
+    <script src="js/login.js"></script>
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"-->
+          <!--integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">-->
+
     <title>Title</title>
 </head>
 <body>
-    <h1>Index</h1>
+
+    <div id="loginForm">
+        <form>
+            <div>
+                <input type="text" placeholder="Username" class="form-control" id="username">
+            </div>
+            <div>
+                <input type="password" placeholder="Password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-default">login</button>
+        </form>
+    </div>
+
+    <div id="userInfo">
+        <div id="email"></div>
+        <div id="nickname"></div>
+        <div id="sex"></div>
+        <div id="birth"></div>
+    </div>
+
+
 </body>
 </html>

@@ -1,10 +1,9 @@
 
-*.class
 
 .idea
 
-.idea/*
+target
 
-.idea/workspace.xml
+/src/main/resources/insert.sql
 
-.idea/workspace.xml
+UNA.imp

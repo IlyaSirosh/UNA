@@ -1,5 +1,7 @@
 package una.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -16,6 +18,12 @@ public class Unit {
     private String name;
 
     private Double coefficient;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "measure_type_id")
+    private MeasureType measureType;
+
 
     public Long getId() {
         return id;
@@ -39,5 +47,13 @@ public class Unit {
 
     public void setCoefficient(Double coefficient) {
         this.coefficient = coefficient;
+    }
+
+    public MeasureType getMeasureType() {
+        return measureType;
+    }
+
+    public void setMeasureType(MeasureType measureType) {
+        this.measureType = measureType;
     }
 }

@@ -2,14 +2,15 @@ package una.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import una.model.CustomDailyPlan;
 import una.model.User;
-import una.repositories.UserRepository;
 import una.security.jwt.JwtTokenUtil;
+import una.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * Created by Illya on 6/21/17.
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -34,7 +35,7 @@ public class UserController {
         String token = request.getHeader(tokenHeader);
         String nickname = tokenUtil.getUsernameFromToken(token);
 
-        return userRepository.findByNickname(nickname);
+        return userService.getByNickname(nickname);
     }
 
 
@@ -42,6 +43,35 @@ public class UserController {
     public ResponseEntity<?> getUserInfo(@ModelAttribute("user") User user){
 
         return ResponseEntity.ok(user);
+
+    }
+
+    @GetMapping
+    @RequestMapping("/daily/plan/all")
+    public ResponseEntity<?> getAllCustomPlans(@ModelAttribute("user") Long user){
+
+        return ResponseEntity.ok(userService.getDailyPlanByUserId(user));
+    }
+
+    @GetMapping
+    @RequestMapping("/daily/plan/{date}")
+    public ResponseEntity<?> getCustomDailyPlanByDate(@ModelAttribute("user") Long user,
+                                                    @PathVariable("date")Date date){
+        CustomDailyPlan plan = userService.getDailyPlanByUserIdAndDate(user,date);
+
+        if(plan == null)
+            return ResponseEntity.badRequest().body(null);
+
+        return ResponseEntity.ok(plan);
+    }
+
+    @PostMapping
+    @RequestMapping("/daily/plan")
+    public ResponseEntity<?> saveDailyPlan(@RequestBody CustomDailyPlan plan){
+
+        userService.saveDailyPlan(plan);
+
+        return ResponseEntity.ok(null);
 
     }
 

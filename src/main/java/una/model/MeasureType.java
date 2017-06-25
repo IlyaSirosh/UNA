@@ -17,9 +17,10 @@ public class MeasureType {
     private String name;
 
     @OneToOne
+    @JoinColumn(name = "recommended_unit_id")
     private Unit recommendedUnit;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "measureType")
     private List<Unit> units;
 
     public Long getId() {

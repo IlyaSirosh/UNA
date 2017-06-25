@@ -1,5 +1,7 @@
 package una.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,13 +13,15 @@ import java.util.List;
 @Entity
 public class CustomDailyPlan extends DailyPlan {
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
     private User user;
 
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "plan")
     private List<Measure> measures;
 
 

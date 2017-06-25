@@ -1,5 +1,7 @@
 package una.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -14,10 +16,17 @@ public class Measure {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "type_id")
     private MeasureType type;
 
     @ManyToOne
+    @JoinColumn(name = "unit_id")
     private Unit unit;
+
+    @ManyToOne
+    @JoinColumn(name = "plan_id")
+    @JsonIgnore
+    private CustomDailyPlan plan;
 
     private Double value;
 
@@ -51,5 +60,13 @@ public class Measure {
 
     public void setValue(Double value) {
         this.value = value;
+    }
+
+    public CustomDailyPlan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(CustomDailyPlan plan) {
+        this.plan = plan;
     }
 }

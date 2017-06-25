@@ -17,10 +17,10 @@ public class Diet {
 
     private String description;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private TemplateDailyPlan dailyPlan;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private TemplateWeeklyPlan weeklyPlan;
 
     private Integer duration;

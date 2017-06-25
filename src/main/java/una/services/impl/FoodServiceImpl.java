@@ -29,6 +29,9 @@ public class FoodServiceImpl implements FoodService {
     @Autowired
     private CustomDishRepository customDishRepository;
 
+    @Autowired
+    private  ProductRepository productRepository;
+
     @Override
     public List<DishCategory> getAllDishCategories() {
         return dishCategoryRepository.findAll();
@@ -46,21 +49,21 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<Product> getProductByCategory(Long category) {
-        return null;
+        return productRepository.findByCategory(category);
     }
 
     @Override
     public List<CustomDish> getCustomDishesByCategory(Long category) {
-        return null;
+        return customDishRepository.findByCategory(category);
     }
 
     @Override
     public List<TemplateDish> getTemplateDishByCategory(Long category) {
-        return null;
+        return templateDishRepository.findByCategory(category);
     }
 
     @Override
     public List<FactoryDish> getFactoryDishesByTemplateDish(Long templateDish) {
-        return null;
+        return factoryDishRepository.findByParent(templateDish);
     }
 }

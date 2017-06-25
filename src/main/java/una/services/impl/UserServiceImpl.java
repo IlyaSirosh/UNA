@@ -47,6 +47,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveDailyPlan(CustomDailyPlan plan) {
-        customDailyPlanRepository.saveAndFlush(plan);
+        customDailyPlanRepository.save(plan);
     }
 }

@@ -21,8 +21,10 @@ $(function () {
     var $templateDishTemplate = $("#template_dish_template");
     var $factoryDishTemplate = $("#factory_dish_template");
     var $productTemplate = $("#product_template");
-    var $dishCategory = $("#dish_category");
-    var $productCategory = $("#product_category_category");
+    var $dishCategories = $("#dish_categories");
+    var $dishCategoryTemplate =  $("#dish_category_template")
+    var $productCategories = $("#product_categories");
+    var $productCategoryTemplate =  $("#product_category_template")
     var $directoryName =$("#directory_name");
 
     function getJwtToken() {
@@ -146,6 +148,26 @@ $(function () {
         })
     }
 
+    function populateDishCategories(categories){
+        var obj;
+        categories.forEach(function(category)
+        {
+            cat = $dishCategoryTemplate.clone();
+            cat.find($(".name")).text(category.name);
+            $dishCategories.append(obj);
+        })
+    }
+
+    function populateProductCategories(categories){
+        var obj;
+        categories.forEach(function(category)
+        {
+            cat = $productCategoryTemplate.clone();
+            cat.find($(".name")).text(category.name);
+            $dishCategories.append(obj);
+        })
+    }
+
     function postDailyPlan(dailyPlan){
 
         $.ajax({
@@ -170,7 +192,7 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
             success:function (data, textStatus, jqXHR) {
-
+                populateDishCategories(data);
             },
             error:function (jqXHR, textStatus, errorThrown) {
 
@@ -190,7 +212,7 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
             success:function (data, textStatus, jqXHR) {
-
+                populateProductCategories(data);
             },
             error:function (jqXHR, textStatus, errorThrown) {
 

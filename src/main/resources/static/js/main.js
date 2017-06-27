@@ -62,7 +62,7 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data, textStatus, jqXHR) {
-                setJwtToken(data.token);
+                removeJwtToken();
                 showLogin()
             },
             error: function (jqXHR, textStatus, errorThrown) {

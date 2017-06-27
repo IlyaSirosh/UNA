@@ -308,7 +308,30 @@ $(function () {
     }
 
     function showNutritionalSummary(){
+        rows = $("#main_container").children()
 
+        var proteinSum = 0
+        var fatSum = 0
+        var carbsSum = 0
+        var calorieSum = 0
+
+        rows.forEach(function (row) {
+            proteinSum += Number(row.find($(".protein")).text());
+        })
+        rows.forEach(function (row) {
+            fatSum += Number(row.find($(".fat")).text());
+        })
+        rows.forEach(function (row) {
+            carbsSum += Number(row.find($(".carbs")).text());
+        })
+        rows.forEach(function (row) {
+            calorieSum += Number(row.find($(".calories")).text());
+        })
+        
+        $nutritionalSummary.find($("#protein_summary")).text(proteinSum);
+        $nutritionalSummary.find($("#fat_summary")).text(fatSum);
+        $nutritionalSummary.find($("#carbs_summary")).text(carbsSum);
+        $nutritionalSummary.find($("#calories_summary")).text(calorieSum);
         $nutritionalSummary.show()
     }
 

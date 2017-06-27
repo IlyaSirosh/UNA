@@ -15,7 +15,6 @@ public class CustomDailyPlan extends DailyPlan {
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnore
     private User user;
 
     @Temporal(TemporalType.DATE)

@@ -6,7 +6,7 @@ $(function () {
     
     var TOKEN_KEY = "jwtToken";
     var $loginButton = $("#login_button");
-    var $backButton = $("#back_button")
+    var $backButton = $("#back_button");
     var $logout = $("#logout_button");
     var $login = $("#login_form");
     var $dailyPlanButton = $("#daily_plan_button");
@@ -73,17 +73,14 @@ $(function () {
 
 
     function getDailyPlan(){
-        var date = new Date();
-        // var string_date = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay();
 
         $.ajax({
-            url: "/user/daily/plan/"+date.getTime(),
+            url: "/user/daily/plan/current",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
             success:function (data, textStatus, jqXHR) {
-                obj = JSON.parse(data)
-                populateMeals(obj.meals);
+                populateMeals(data);
             },
             error:function (jqXHR, textStatus, errorThrown) {
 
@@ -365,7 +362,7 @@ $(function () {
     }
 
     function showNutritionalSummary(){
-        rows = $("#main_container").children()
+        rows = $("#main_container").children();
 
         var proteinSum = 0;
         var fatSum = 0;
@@ -374,16 +371,16 @@ $(function () {
 
         rows.forEach(function (row) {
             proteinSum += Number(row.find($(".protein")).text());
-        })
+        });
         rows.forEach(function (row) {
             fatSum += Number(row.find($(".fat")).text());
-        })
+        });
         rows.forEach(function (row) {
             carbsSum += Number(row.find($(".carbs")).text());
-        })
+        });
         rows.forEach(function (row) {
             calorieSum += Number(row.find($(".calories")).text());
-        })
+        });
 
         $proteinSummary.text(proteinSum);
         $fatSummary.text(fatSum);

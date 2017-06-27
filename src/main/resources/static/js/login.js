@@ -29,6 +29,7 @@ $(function () {
     var $productTemplate = $("#product_template");
     var $dishCategory = $("#dish_category");
     var $productCategory = $("#product_category_category");
+    var $header =$("#")
 
     function getJwtToken() {
         return localStorage.getItem(TOKEN_KEY);
@@ -271,7 +272,6 @@ $(function () {
 
     function showAfterLogin() {
         $login.hide();
-        $
         showDailyPlanPage();
     }
 

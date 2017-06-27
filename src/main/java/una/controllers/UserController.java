@@ -48,9 +48,9 @@ public class UserController {
 
     @GetMapping
     @RequestMapping("/daily/plan/all")
-    public ResponseEntity<?> getAllCustomPlans(@ModelAttribute("user") Long user){
+    public ResponseEntity<?> getAllCustomPlans(@ModelAttribute("user") User user){
 
-        return ResponseEntity.ok(userService.getDailyPlanByUserId(user));
+        return ResponseEntity.ok(userService.getDailyPlanByUserId(user.getId()));
     }
 
     @GetMapping
@@ -67,7 +67,9 @@ public class UserController {
 
     @PostMapping
     @RequestMapping("/daily/plan")
-    public ResponseEntity<?> saveDailyPlan(@RequestBody CustomDailyPlan plan){
+    public ResponseEntity<?> saveDailyPlan(@ModelAttribute("user") User user,@RequestBody CustomDailyPlan plan){
+
+        plan.setUser(user);
 
         userService.saveDailyPlan(plan);
 

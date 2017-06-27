@@ -6,13 +6,29 @@ $(function () {
 
     var TOKEN_KEY = "jwtToken";
     var $loginButton = $("#login_button");
+    var $backButton = $("#back_button")
+    var $logout = $("#logout_button");
     var $login = $("#login_form");
-    var $logout = $("logout_button");
     var $mainPage = $("");
-    var $dailyPlanButton = $("daily_plan_button");
+    var $dailyPlanButton = $("#daily_plan_button");
     var $dailyPlanPage = $("");
-    var $mainContainer = $("main_container");
-
+    var $mainContainer = $("#main_container");
+    var $protein = $(".protein");
+    var $fat = $(".fat");
+    var $carbs = $(".carbs");
+    var $calories = $(".calories");
+    var $nutritionalSummary = $("#nutritional_summary");
+    var $proteinSummary = $("#protein_summary");
+    var $proteinSummary = $("#fat_summary");
+    var $proteinSummary = $("#carbs_summary_summary");
+    var $proteinSummary = $("#calories_summary");
+    var $mealTemplate = $("#meal_template");
+    var $customDishTemplate = $("#custom_dish_template");
+    var $customDishTemplate = $("#template_dish_template");
+    var $customDishTemplate = $("#factory_dish_template");
+    var $productTemplate = $("#product_template");
+    var $dishCategory = $("#dish_category");
+    var $productCategory = $("#product_category_category");
 
     function getJwtToken() {
         return localStorage.getItem(TOKEN_KEY);
@@ -255,7 +271,7 @@ $(function () {
 
     function showAfterLogin() {
         $login.hide();
-
+        $
     }
 
     function showMainPage(){

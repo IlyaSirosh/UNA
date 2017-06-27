@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import una.model.CustomDailyPlan;
+import una.model.Meal;
 import una.model.User;
 import una.security.jwt.JwtTokenUtil;
 import una.services.UserService;
@@ -79,10 +80,25 @@ public class UserController {
 
         plan.setUser(user);
 
-        userService.saveDailyPlan(plan);
+        plan = userService.saveDailyPlan(plan);
 
-        return ResponseEntity.ok(null);
+        if(plan==null)
+            return ResponseEntity.badRequest().body(null)
 
+        return ResponseEntity.ok(plan);
+
+    }
+
+    @PostMapping
+    @RequestMapping("/meal")
+    public ResponseEntity<?> saveMeal(@RequestBody Meal meal){
+
+        meal = userService.saveMeal(meal);
+
+        if (meal == null)
+            return ResponseEntity.badRequest().body(null);
+
+        return ResponseEntity.ok(meal);
     }
 
 }

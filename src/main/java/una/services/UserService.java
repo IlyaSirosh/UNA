@@ -2,6 +2,7 @@ package una.services;
 
 
 import una.model.CustomDailyPlan;
+import una.model.Meal;
 import una.model.User;
 
 import java.util.Date;
@@ -20,8 +21,8 @@ public interface UserService {
 
     List<CustomDailyPlan> getDailyPlanByUserId(Long user);
     CustomDailyPlan getDailyPlanByUserIdAndDate(Long user, Date date);
-    void saveDailyPlan(CustomDailyPlan plan);
-
+    CustomDailyPlan saveDailyPlan(CustomDailyPlan plan);
+    Meal saveMeal(Meal meal);
 
 
 }

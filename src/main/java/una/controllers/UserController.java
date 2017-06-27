@@ -83,7 +83,7 @@ public class UserController {
         plan = userService.saveDailyPlan(plan);
 
         if(plan==null)
-            return ResponseEntity.badRequest().body(null)
+            return ResponseEntity.badRequest().body(null);
 
         return ResponseEntity.ok(plan);
 

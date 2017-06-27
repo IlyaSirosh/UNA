@@ -29,7 +29,7 @@ $(function () {
     var $productTemplate = $("#product_template");
     var $dishCategory = $("#dish_category");
     var $productCategory = $("#product_category_category");
-    var $header =$("#")
+    var $directoryName =$("#directory_name")
 
     function getJwtToken() {
         return localStorage.getItem(TOKEN_KEY);
@@ -237,12 +237,6 @@ $(function () {
 
     }
 
-
-
-
-
-
-
     function createAuthorizationTokenHeader() {
         var token = getJwtToken();
         if (token) {
@@ -265,16 +259,9 @@ $(function () {
         doLogin(formData);
     });
 
-
-
-
-
-
     function showAfterLogin() {
         $login.hide();
-
         showDailyPlanPage();
-
     }
 
     function showMainPage(){
@@ -284,7 +271,14 @@ $(function () {
     function showDailyPlanPage(){
         $logout.show();
         $dailyPlanButton.hide();
+        $directoryName.text("Daily plan");
+        showNutritionalSummary();
+    }
 
+    function showMealPage(){
+        $logout.show();
+        $dailyPlanButton.hide();
+        $directoryName.text("Meal");
         showNutritionalSummary();
     }
 

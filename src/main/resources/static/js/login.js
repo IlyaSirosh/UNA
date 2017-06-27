@@ -271,12 +271,8 @@ $(function () {
 
 
     function showAfterLogin() {
-        $login.hide();
-<<<<<<< HEAD
+        $login.hide();HEAD
         showDailyPlanPage();
-=======
-
->>>>>>> 3cd695fd5906ef1bfde2e1425e9aa269c5f8ceb1
     }
 
     function showMainPage(){

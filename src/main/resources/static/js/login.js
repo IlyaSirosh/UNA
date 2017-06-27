@@ -54,23 +54,6 @@ $(function () {
         });
     }
 
-    function doLogOut() {
-        $.ajax({
-            url: "/auth",
-            type: "POST",
-            data: JSON.stringify(loginData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data, textStatus, jqXHR) {
-                setJwtToken(data.token);
-                showLogin()
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert("Incorrect data");
-            }
-        });
-    }
-
 
     function getDailyPlan(){
 
@@ -80,7 +63,7 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
             success:function (data, textStatus, jqXHR) {
-                populateMeals(data);
+                populateMeals(data.meals);
             },
             error:function (jqXHR, textStatus, errorThrown) {
 
@@ -141,7 +124,7 @@ $(function () {
             mealCopy.find($(".name")).text(meal.name);
             $("#main_container").append(mealCopy);
             mealCopy.show();
-        })
+        });
     }
 
     function postDailyPlan(dailyPlan){
@@ -398,7 +381,20 @@ $(function () {
         $login.show();
     }
 
+
+
+    $logout.click(function (event) {
+        event.preventDefault();
+
+        removeJwtToken();
+        showLogin();
+
+    });
+
+
     if(getJwtToken()){
         showAfterLogin();
+    }else{
+        showLogin();
     }
 });

@@ -18,8 +18,8 @@ $(function () {
     var $caloriesSummary = $("#calories_summary");
     var $mealTemplate = $("#meal_template");
     var $customDishTemplate = $("#custom_dish_template");
-    var $customDishTemplate = $("#template_dish_template");
-    var $customDishTemplate = $("#factory_dish_template");
+    var $templateDishTemplate = $("#template_dish_template");
+    var $factoryDishTemplate = $("#factory_dish_template");
     var $productTemplate = $("#product_template");
     var $dishCategory = $("#dish_category");
     var $productCategory = $("#product_category_category");
@@ -95,6 +95,48 @@ $(function () {
     }
 
     function populateMeals (meals){
+        meals.forEach(function (meal)
+        {
+            var mealCopy = $mealTemplate.clone();
+            mealCopy.find($(".calories")).text("-1");
+            mealCopy.find($(".name")).text(meal.name);
+            $("#main_container").append(mealCopy);
+            mealCopy.show();
+        })
+    }
+
+    function populateCustomDishes (dishes){
+        dishes.forEach(function (dish)
+        {
+            var dishCopy = $customDishTemplate.clone();
+            dishCopy.find($(".calories")).text("-1");
+            dishCopy.find($(".name")).text(meal.name);
+            $("#main_container").append(dishCopy);
+            mealCopy.show();
+        })
+    }
+    function populateFactoryDishes (dishes){
+        dishes.forEach(function (dish)
+        {
+            var dishCopy = $factoryDishTemplate.clone();
+            dishCopy.find($(".calories")).text("-1");
+            dishCopy.find($(".name")).text(meal.name);
+            $("#main_container").append(dishCopy);
+            mealCopy.show();
+        })
+    }
+    function populateTemplateDishes (dishes){
+        dishes.forEach(function (dish)
+        {
+            var dishCopy = $templateDishTemplate.clone();
+            dishCopy.find($(".calories")).text("-1");
+            dishCopy.find($(".name")).text(meal.name);
+            $("#main_container").append(dishCopy);
+            mealCopy.show();
+        })
+    }
+
+    function populateProducts (meals){
         meals.forEach(function (meal)
         {
             var mealCopy = $mealTemplate.clone();
@@ -188,7 +230,7 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
             success:function (data, textStatus, jqXHR) {
-
+                populateProducts(data);
             },
             error:function (jqXHR, textStatus, errorThrown) {
 
@@ -208,7 +250,7 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
             success:function (data, textStatus, jqXHR) {
-
+                populateDishes(data);
             },
             error:function (jqXHR, textStatus, errorThrown) {
 
@@ -283,6 +325,7 @@ $(function () {
     function showAfterLogin() {
         $login.hide();
         $logout.show();
+        $mainContainer.show();
         showDailyPlanPage();
     }
 
@@ -307,6 +350,8 @@ $(function () {
         $dailyPlanButton.show();
         $directoryName.text("Dish category");
         $backButton.show();
+        $nutritionalSummary.hide();
+        getDishCategories();
         showNutritionalSummary();
     }
 
@@ -314,16 +359,18 @@ $(function () {
         $dailyPlanButton.show();
         $directoryName.text("Product category");
         $backButton.show();
+        $nutritionalSummary.hide();
+        getProductMainCategories();
         showNutritionalSummary();
     }
 
     function showNutritionalSummary(){
         rows = $("#main_container").children()
 
-        var proteinSum = 0
-        var fatSum = 0
-        var carbsSum = 0
-        var calorieSum = 0
+        var proteinSum = 0;
+        var fatSum = 0;
+        var carbsSum = 0;
+        var calorieSum = 0;
 
         rows.forEach(function (row) {
             proteinSum += Number(row.find($(".protein")).text());
@@ -342,7 +389,7 @@ $(function () {
         $fatSummary.text(fatSum);
         $carbsSummary.text(carbsSum);
         $caloriesSummary.text(calorieSum);
-        $nutritionalSummary.show()
+        $nutritionalSummary.show();
     }
 
     function showLogin(){

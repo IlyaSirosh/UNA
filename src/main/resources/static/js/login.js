@@ -378,6 +378,8 @@ $(function () {
         $mainContainer.hide();
         $backButton.hide();
         $dailyPlanButton.hide();
+        $nutritionalSummary.hide();
+        $directoryName.hide();
         $login.show();
     }
 
@@ -394,7 +396,9 @@ $(function () {
 
     if(getJwtToken()){
         showAfterLogin();
+        console.log("Token in storage");
     }else{
         showLogin();
+        console.log("Token is not in storage. Try login");
     }
 });

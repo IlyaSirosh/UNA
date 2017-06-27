@@ -272,6 +272,7 @@ $(function () {
     function showAfterLogin() {
         $login.hide();
         $
+        showDailyPlanPage();
     }
 
     function showMainPage(){
@@ -280,10 +281,14 @@ $(function () {
 
     function showDailyPlanPage(){
         $logout.show();
-
+        $dailyPlanButton.hide();
+        $
+        showNutritionalSummary();
     }
 
+    function showNutritionalSummary(){
 
+    }
 
     if(getJwtToken()){
         showAfterLogin();

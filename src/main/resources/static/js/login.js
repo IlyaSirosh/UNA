@@ -9,7 +9,6 @@ $(function () {
     var $backButton = $("#back_button")
     var $logout = $("#logout_button");
     var $login = $("#login_form");
-    var $mainPage = $("");
     var $dailyPlanButton = $("#daily_plan_button");
     var $dailyPlanPage = $("");
     var $mainContainer = $("#main_container");
@@ -60,6 +59,22 @@ $(function () {
         });
     }
 
+    function doLogOut() {
+        $.ajax({
+            url: "/auth",
+            type: "POST",
+            data: JSON.stringify(loginData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                setJwtToken(data.token);
+                showLogin()
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Incorrect data");
+            }
+        });
+    }
 
 
     function getDailyPlan(){
@@ -327,12 +342,21 @@ $(function () {
         rows.forEach(function (row) {
             calorieSum += Number(row.find($(".calories")).text());
         })
-        
+
         $nutritionalSummary.find($("#protein_summary")).text(proteinSum);
         $nutritionalSummary.find($("#fat_summary")).text(fatSum);
         $nutritionalSummary.find($("#carbs_summary")).text(carbsSum);
         $nutritionalSummary.find($("#calories_summary")).text(calorieSum);
         $nutritionalSummary.show()
+    }
+
+    function showLogin(){
+        $logout.hide();
+        $backButton.hide();
+        $mainContainer.hide();
+        $backButton.hide();
+        $dailyPlanButton.hide();
+        $login.show();
     }
 
     if(getJwtToken()){

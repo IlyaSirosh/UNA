@@ -13,7 +13,7 @@ import java.util.List;
 public interface CustomDailyPlanRepository extends JpaRepository<CustomDailyPlan,Long> {
 
 
-    CustomDailyPlan findByUserAndDate(Long user_id, Date date);
-    List<CustomDailyPlan> findByUserOrderByDateDesc(Long user_id);
+    CustomDailyPlan findByUser_idAndDate(Long user_id, Date date);
+    List<CustomDailyPlan> findByUser_idOrderByDateDesc(Long user_id);
 
 }

@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<CustomDailyPlan> getDailyPlanByUserId(Long user) {
-        return customDailyPlanRepository.findByUserOrderByDateDesc(user);
+        return customDailyPlanRepository.findByUser_idOrderByDateDesc(user);
     }
 
     @Override
     public CustomDailyPlan getDailyPlanByUserIdAndDate(Long user, Date date) {
-        return customDailyPlanRepository.findByUserAndDate(user, date);
+        return customDailyPlanRepository.findByUser_idAndDate(user, date);
     }
 
     @Override

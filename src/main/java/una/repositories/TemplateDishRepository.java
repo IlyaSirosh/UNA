@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface TemplateDishRepository extends JpaRepository<TemplateDish, Long> {
 
-    List<TemplateDish> findByCategory(Long id);
+    List<TemplateDish> findByCategory_id(Long id);
 }

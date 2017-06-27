@@ -44,26 +44,26 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<ProductCategory> getProductCategoriesByParent(Long category) {
-        return productCategoryRepository.findByParent(category);
+        return productCategoryRepository.findByParent_id(category);
     }
 
     @Override
     public List<Product> getProductByCategory(Long category) {
-        return productRepository.findByCategory(category);
+        return productRepository.findByCategory_id(category);
     }
 
     @Override
     public List<CustomDish> getCustomDishesByCategory(Long category) {
-        return customDishRepository.findByCategory(category);
+        return customDishRepository.findByCategory_id(category);
     }
 
     @Override
     public List<TemplateDish> getTemplateDishByCategory(Long category) {
-        return templateDishRepository.findByCategory(category);
+        return templateDishRepository.findByCategory_id(category);
     }
 
     @Override
     public List<FactoryDish> getFactoryDishesByTemplateDish(Long templateDish) {
-        return factoryDishRepository.findByParent(templateDish);
+        return factoryDishRepository.findByParent_id(templateDish);
     }
 }

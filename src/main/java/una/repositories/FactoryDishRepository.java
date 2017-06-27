@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface FactoryDishRepository extends JpaRepository<FactoryDish,Long> {
 
-    List<FactoryDish> findByCategory(Long id);
-    List<FactoryDish> findByParent(Long id);
+    List<FactoryDish> findByCategory_id(Long id);
+    List<FactoryDish> findByParent_id(Long id);
 }

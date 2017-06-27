@@ -12,5 +12,5 @@ public interface ProductCategoryRepository extends JpaRepository<ProductCategory
 
 
     List<ProductCategory> findByParentIsNull();
-    List<ProductCategory> findByParent(Long parent);
+    List<ProductCategory> findByParent_id(Long parent);
 }

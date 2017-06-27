@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface CustomDishRepository extends JpaRepository<CustomDish,Long> {
 
-    List<CustomDish> findByCategory(Long id);
+    List<CustomDish> findByCategory_id(Long id);
 }

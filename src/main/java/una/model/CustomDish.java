@@ -17,6 +17,7 @@ public class CustomDish extends Dish{
     private List<Ingredient> ingredients;
 
     @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false)
     private User user;
 
     public List<Ingredient> getIngredients() {

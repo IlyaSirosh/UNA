@@ -15,7 +15,7 @@ public abstract class DailyPlan {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     protected List<Meal> meals;
 
 

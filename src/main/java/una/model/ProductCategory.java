@@ -16,7 +16,7 @@ public class ProductCategory {
     private String name;
 
 
-    @OneToOne
+    @OneToOne(optional = true)
     private ProductCategory parent;
 
     private String description;

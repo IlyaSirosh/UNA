@@ -261,6 +261,7 @@ $(function () {
 
     function showAfterLogin() {
         $login.hide();
+        $logout.show();
         showDailyPlanPage();
     }
 
@@ -269,21 +270,35 @@ $(function () {
     }
 
     function showDailyPlanPage(){
-        $logout.show();
         $dailyPlanButton.hide();
         $directoryName.text("Daily plan");
+        getDailyPlan();
         showNutritionalSummary();
     }
 
     function showMealPage(){
-        $logout.show();
-        $dailyPlanButton.hide();
+        $dailyPlanButton.show();
         $directoryName.text("Meal");
+        showNutritionalSummary();
+    }
+
+    function showDishCategoryPage(){
+        $dailyPlanButton.show();
+        $directoryName.text("Dish category");
+        $backButton.show();
+        showNutritionalSummary();
+    }
+
+    function showProductCategoryPage(){
+        $dailyPlanButton.show();
+        $directoryName.text("Product category");
+        $backButton.show();
         showNutritionalSummary();
     }
 
     function showNutritionalSummary(){
 
+        $nutritionalSummary.show()
     }
 
     if(getJwtToken()){

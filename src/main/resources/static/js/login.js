@@ -112,6 +112,7 @@ $(function () {
             mealCopy.show();
         })
     }
+
     function populateFactoryDishes (dishes){
         dishes.forEach(function (dish)
         {
@@ -122,6 +123,7 @@ $(function () {
             mealCopy.show();
         })
     }
+
     function populateTemplateDishes (dishes){
         dishes.forEach(function (dish)
         {
@@ -136,7 +138,7 @@ $(function () {
     function populateProducts (meals){
         meals.forEach(function (meal)
         {
-            var mealCopy = $mealTemplate.clone();
+            var mealCopy = $productTemplate.clone();
             mealCopy.find($(".calories")).text("-1");
             mealCopy.find($(".name")).text(meal.name);
             $("#main_container").append(mealCopy);

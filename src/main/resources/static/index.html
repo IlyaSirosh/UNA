@@ -8,19 +8,19 @@
 
 <body class="bg-faded">
   <div class="bg-primary w-100 py-1" style="position: fixed; 
-    z-index: 2;">
+    z-index: 2; height:80">
     <div class="container">
       <div class="row">
         <div class="align-self-center w-100 col-md-4 col-4">
-          <h1 class="text-left display-4">UNA</h1>
+          <h1 class="text-left display-4 h-100">UNA</h1>
         </div>
         <div class="col-md-4 p-1 text-center align-self-center col-4">
-          <h1 id="directory_name" class="text-center">Heading</h1>
+          <h1 id="directory_name" class="text-center h-75 m-0">Heading</h1>
         </div>
         <div class="col-md-4 text-right align-self-center col-4">
           <div class="">
-            <a href="#" class="btn text-center btn-secondary" id="daily_plan_button">Daily plan</a>
-            <a href="#" class="btn text-center btn-secondary" id="logout_button">Logout</a>
+            <a href="#" class="btn text-center btn-secondary" id="daily_plan_button" onclick="getDailyPlan()">Daily plan</a>
+            <a href="#" class="btn text-center btn-secondary" id="logout_button" onclick="doLogOut()">Logout</a>
           </div>
         </div>
       </div>
@@ -208,9 +208,9 @@
               </div>
             </div>
           </div>
-          <div style="padding-left:5%; height:150px;
+          <div id="dish_category" class="row m-1 p-2" style="padding-left:5%; height:150px;
     overflow-x: auto;
-    overflow-y: hidden;" id="dish_category" class="row m-1 p-2">
+    overflow-y: hidden;">
             <div class="m-1" style="height:130px; width:130px">
               <img class="img-fluid d-block w-100" src="borsh.jpg">
               <p class="text-center m-1">Category</p>
@@ -240,9 +240,9 @@
               <p class="text-center m-1">Category</p>
             </div>
           </div>
-          <div class="row m-1 p-2" style="padding-left:5%; height:150px;
+          <div id="product_category" class="row m-1 p-2" style="padding-left:5%; height:150px;
     overflow-x: auto;
-    overflow-y: hidden;" id="product_category">
+    overflow-y: hidden;">
             <div class="m-1" style="height:130px; width:130px">
               <img class="img-fluid d-block w-100" src="borsh.jpg">
               <p class="text-center m-1">Category</p>
@@ -303,7 +303,6 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
-  <script src="js/login.js"></script>
 </body>
 
 </html>

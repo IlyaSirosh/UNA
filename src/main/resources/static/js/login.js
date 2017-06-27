@@ -3,7 +3,7 @@
  */
 
 $(function () {
-
+    
     var TOKEN_KEY = "jwtToken";
     var $loginButton = $("#login_button");
     var $backButton = $("#back_button")
@@ -63,10 +63,10 @@ $(function () {
 
     function getDailyPlan(){
         var date = new Date();
-        var string_date = date.getYear()+"-"+date.getMonth()+"-"+date.getDay();
+        // var string_date = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay();
 
         $.ajax({
-            url: "/user/daily/plan/"+string_date,
+            url: "/user/daily/plan/"+date.getTime(),
             type: "GET",
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
@@ -271,7 +271,7 @@ $(function () {
 
     function showAfterLogin() {
         $login.hide();
-        $
+
     }
 
     function showMainPage(){

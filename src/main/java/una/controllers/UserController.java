@@ -10,6 +10,8 @@ import una.security.jwt.JwtTokenUtil;
 import una.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -55,12 +57,18 @@ public class UserController {
 
     @GetMapping
     @RequestMapping("/daily/plan/{date}")
-    public ResponseEntity<?> getCustomDailyPlanByDate(@ModelAttribute("user") Long user,
-                                                    @PathVariable("date")Date date){
-        CustomDailyPlan plan = userService.getDailyPlanByUserIdAndDate(user,date);
+    public ResponseEntity<?> getCustomDailyPlanByDate(@ModelAttribute("user") User user,
+                                                    @PathVariable("date")Long d){
+        Date date = new Date(d);
 
-        if(plan == null)
-            return ResponseEntity.badRequest().body(null);
+        CustomDailyPlan plan = userService.getDailyPlanByUserIdAndDate(user.getId(),date);
+
+        if(plan == null){
+            plan = new CustomDailyPlan();
+            plan.setUser(user);
+            plan.setDate(date);
+        }
+
 
         return ResponseEntity.ok(plan);
     }

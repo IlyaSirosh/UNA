@@ -74,6 +74,23 @@ public class UserController {
         return ResponseEntity.ok(plan);
     }
 
+    @GetMapping
+    @RequestMapping("/daily/plan/current")
+    public ResponseEntity<?> getCustomDailyPlan(@ModelAttribute("user") User user){
+        Date date = new Date(System.currentTimeMillis());
+
+        CustomDailyPlan plan = userService.getDailyPlanByUserIdAndDate(user.getId(),date);
+
+        if(plan == null){
+            plan = new CustomDailyPlan();
+            plan.setUser(user);
+            plan.setDate(date);
+        }
+
+
+        return ResponseEntity.ok(plan);
+    }
+
     @PostMapping
     @RequestMapping("/daily/plan")
     public ResponseEntity<?> saveDailyPlan(@ModelAttribute("user") User user,@RequestBody CustomDailyPlan plan){
@@ -90,8 +107,44 @@ public class UserController {
     }
 
     @PostMapping
+    @RequestMapping("/daily/plan/test")
+    public ResponseEntity<?> saveDailyPlan(@ModelAttribute("user") User user){
+
+        CustomDailyPlan plan = new CustomDailyPlan();
+
+        plan.setDate(new Date(System.currentTimeMillis()));
+
+        plan.setUser(user);
+
+        plan = userService.saveDailyPlan(plan);
+
+        if(plan==null)
+            return ResponseEntity.badRequest().body(null);
+
+        return ResponseEntity.ok(plan);
+
+    }
+
+    @PostMapping
     @RequestMapping("/meal")
     public ResponseEntity<?> saveMeal(@RequestBody Meal meal){
+
+        meal = userService.saveMeal(meal);
+
+        if (meal == null)
+            return ResponseEntity.badRequest().body(null);
+
+        return ResponseEntity.ok(meal);
+    }
+
+    @PostMapping
+    @RequestMapping("/meal/test")
+    public ResponseEntity<?> saveMeal(){
+
+        Meal meal = new Meal();
+        meal.setName("l");
+        meal.setTime(new Date(System.currentTimeMillis()));
+
 
         meal = userService.saveMeal(meal);
 

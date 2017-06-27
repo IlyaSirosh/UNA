@@ -23,7 +23,7 @@ $(function () {
     var $productTemplate = $("#product_template");
     var $dishCategory = $("#dish_category");
     var $productCategory = $("#product_category_category");
-    var $directoryName =$("#directory_name")
+    var $directoryName =$("#directory_name");
 
     function getJwtToken() {
         return localStorage.getItem(TOKEN_KEY);

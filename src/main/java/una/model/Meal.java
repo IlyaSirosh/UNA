@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,32 +26,20 @@ public class Meal {
     private Nutrients recommendedNutrients;
 
     @ElementCollection
-    @MapKeyClass(value = Product.class)
     @CollectionTable(name = "meal_to_product",joinColumns = @JoinColumn(name = "meal_id"))
-    @Column(name = "amount")
-    @MapKeyJoinColumn(name = "product_id")
-    private Map<Product,Double> products;
+    private List<ProductAmount> products;
 
     @ElementCollection
-    @MapKeyClass(value = CustomDish.class)
     @CollectionTable(name = "meal_to_custom_dish",joinColumns = @JoinColumn(name = "meal_id"))
-    @Column(name = "amount")
-    @MapKeyJoinColumn(name = "dish_id")
-    private Map<CustomDish,Double> customDishes;
+    private List<CustomDishAmount> customDishes;
 
     @ElementCollection
-    @MapKeyClass(value = TemplateDish.class)
     @CollectionTable(name = "meal_to_template_dish",joinColumns = @JoinColumn(name = "meal_id"))
-    @Column(name = "amount")
-    @MapKeyJoinColumn(name = "dish_id")
-    private Map<TemplateDish,Double> templateDishes;
+    private List<TemplateDishAmount> templateDishes;
 
     @ElementCollection
-    @MapKeyClass(value = FactoryDish.class)
     @CollectionTable(name = "meal_to_factory_dish",joinColumns = @JoinColumn(name = "meal_id"))
-    @Column(name = "amount")
-    @MapKeyJoinColumn(name = "dish_id")
-    private Map<FactoryDish,Double> factoryDishes;
+    private List<FactoryDishAmount> factoryDishes;
 
     @Temporal(TemporalType.TIME)
     private Date time;
@@ -79,35 +68,35 @@ public class Meal {
         this.recommendedNutrients = recommendedNutrients;
     }
 
-    public Map<Product, Double> getProducts() {
+    public List<ProductAmount> getProducts() {
         return products;
     }
 
-    public void setProducts(Map<Product, Double> products) {
+    public void setProducts(List<ProductAmount> products) {
         this.products = products;
     }
 
-    public Map<CustomDish, Double> getCustomDishes() {
+    public List<CustomDishAmount> getCustomDishes() {
         return customDishes;
     }
 
-    public void setCustomDishes(Map<CustomDish, Double> customDishes) {
+    public void setCustomDishes(List<CustomDishAmount> customDishes) {
         this.customDishes = customDishes;
     }
 
-    public Map<TemplateDish, Double> getTemplateDishes() {
+    public List<TemplateDishAmount> getTemplateDishes() {
         return templateDishes;
     }
 
-    public void setTemplateDishes(Map<TemplateDish, Double> templateDishes) {
+    public void setTemplateDishes(List<TemplateDishAmount> templateDishes) {
         this.templateDishes = templateDishes;
     }
 
-    public Map<FactoryDish, Double> getFactoryDishes() {
+    public List<FactoryDishAmount> getFactoryDishes() {
         return factoryDishes;
     }
 
-    public void setFactoryDishes(Map<FactoryDish, Double> factoryDishes) {
+    public void setFactoryDishes(List<FactoryDishAmount> factoryDishes) {
         this.factoryDishes = factoryDishes;
     }
 

@@ -208,3 +208,22 @@ INSERT INTO custom_dish_ingredient (dish_id, amount, category_id, ingredient_id)
 
 INSERT INTO custom_dish_ingredient (dish_id, amount, category_id, ingredient_id)
   SELECT d.id,5,c.category_id,c.id FROM custom_dish d, product c WHERE d.name = "Mashed potatoes" AND c.name="olive oil";
+
+
+
+INSERT INTO meal (name,calories,carbohydrates,fats,proteins,time) VALUES ("lunch",100,100,100,100,"12:30:00");
+
+INSERT INTO meal_to_product (meal_id,amount,product_id) VALUES (1,100,14);
+INSERT INTO meal_to_template_dish (meal_id,amount,dish_id) VALUES (1,140,1);
+INSERT INTO meal_to_product (meal_id,amount,product_id) VALUES (1,100,12);
+
+INSERT INTO meal (name,calories,carbohydrates,fats,proteins,time) VALUES ("dinner",100,100,100,100,"18:30:00");
+
+
+INSERT INTO meal_to_factory_dish (meal_id,amount,dish_id) VALUES (2,140,1);
+INSERT INTO meal_to_custom_dish (meal_id,amount,dish_id) VALUES (2,100,1);
+
+INSERT INTO custom_daily_plan (date,user_id) VALUES ("2017-06-27",1);
+
+INSERT INTO custom_daily_plan_meals (custom_daily_plan_id,meals_id) VALUES (1,1);
+INSERT INTO custom_daily_plan_meals (custom_daily_plan_id,meals_id) VALUES (1,2);

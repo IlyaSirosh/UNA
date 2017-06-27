@@ -72,7 +72,8 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
             success:function (data, textStatus, jqXHR) {
-
+                obj = JSON.parse(data)
+                populateMeals(obj.meals);
             },
             error:function (jqXHR, textStatus, errorThrown) {
 
@@ -83,6 +84,15 @@ $(function () {
 
     }
 
+    function populateMeals (meals){
+        meals.forEach(function (meal, i, meals)
+        {
+            var mealCopy = $mealTemplate.clone();
+            mealCopy.find($(".calories")).text("-1");
+            $("#main_container").append(mealCopy);
+            mealCopy.show();
+        })
+    }
 
     function postDailyPlan(dailyPlan){
 

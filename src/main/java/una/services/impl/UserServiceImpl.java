@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import una.model.CustomDailyPlan;
 import una.model.DailyPlan;
+import una.model.Meal;
 import una.model.User;
 import una.repositories.CustomDailyPlanRepository;
+import una.repositories.MealRepository;
 import una.repositories.UserRepository;
 import una.services.UserService;
 
@@ -21,6 +23,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private MealRepository mealRepository;
 
     @Autowired
     private CustomDailyPlanRepository customDailyPlanRepository;
@@ -46,7 +51,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveDailyPlan(CustomDailyPlan plan) {
-        customDailyPlanRepository.save(plan);
+    public CustomDailyPlan saveDailyPlan(CustomDailyPlan plan) {
+        return customDailyPlanRepository.save(plan);
+    }
+
+    @Override
+    public Meal saveMeal(Meal meal) {
+        return mealRepository.save(meal);
     }
 }

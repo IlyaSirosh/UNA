@@ -85,10 +85,11 @@ $(function () {
     }
 
     function populateMeals (meals){
-        meals.forEach(function (meal, i, meals)
+        meals.forEach(function (meal)
         {
             var mealCopy = $mealTemplate.clone();
             mealCopy.find($(".calories")).text("-1");
+            mealCopy.find($(".name")).text(meal.name);
             $("#main_container").append(mealCopy);
             mealCopy.show();
         })

@@ -40,7 +40,27 @@
     <div class="container">
       <div class="row w-100" style="
     margin-top:120; visibility:hidde">
-        <div class="col-md-10 align-self-start p-4">
+        <div class="col-md-10 align-self-start p-4" id="main_container"> </div>
+        <div class="m-0 p-0 col-md-2 bg-inverse align-self-start" id="nutritional_summary">
+          <p class="lead text-center">Summary</p>
+          <div class="row w-100 p-0 m-0">
+            <div class="col-md-12 align-self-center p-0 text-left">
+              <p class="p-1 m-1 bg-danger" id="protein_summary">Protein: 150.7</p>
+            </div>
+            <div class="col-md-12 align-self-center p-0 text-left">
+              <p class="p-1 m-1 bg-warning" id="fat_summary">Fat: 135.7</p>
+            </div>
+            <div class="col-md-12 align-self-center p-0 text-left">
+              <p class="p-1 m-1 bg-success" id="carbs_summary">Carbs:15.7</p>
+            </div>
+            <div class="col-md-12 align-self-center p-0 text-left">
+              <p class="p-1 m-1 bg-faded" id="calories_summary">Calories:15.7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div id="templates" class="col-md-12" style="visibility:hidden">
           <div id="meal_template" class="row m-2">
             <div class="col-md-3 align-self-center">
               <p class="time text-info lead bg-warning w-75 p-1 m-1 text-center">8:30</p>
@@ -188,9 +208,9 @@
               </div>
             </div>
           </div>
-          <div class="row m-1 p-2" style="padding-left:5%; height:150px;
+          <div style="padding-left:5%; height:150px;
     overflow-x: auto;
-    overflow-y: hidden;">
+    overflow-y: hidden;" id="dish_category" class="row m-1 p-2">
             <div class="m-1" style="height:130px; width:130px">
               <img class="img-fluid d-block w-100" src="borsh.jpg">
               <p class="text-center m-1">Category</p>
@@ -222,7 +242,7 @@
           </div>
           <div class="row m-1 p-2" style="padding-left:5%; height:150px;
     overflow-x: auto;
-    overflow-y: hidden;">
+    overflow-y: hidden;" id="product_category">
             <div class="m-1" style="height:130px; width:130px">
               <img class="img-fluid d-block w-100" src="borsh.jpg">
               <p class="text-center m-1">Category</p>
@@ -250,23 +270,6 @@
             <div class="m-1" style="height:130px; width:130px">
               <img class="img-fluid d-block w-100" src="borsh.jpg">
               <p class="text-center m-1">Category</p>
-            </div>
-          </div>
-        </div>
-        <div class="m-0 p-0 col-md-2 bg-inverse align-self-start" id="nutritional_summary">
-          <p class="lead text-center">Summary</p>
-          <div class="row w-100 p-0 m-0">
-            <div class="col-md-12 align-self-center p-0 text-left">
-              <p class="p-1 m-1 bg-danger" id="protein_summary">Protein: 150.7</p>
-            </div>
-            <div class="col-md-12 align-self-center p-0 text-left">
-              <p class="p-1 m-1 bg-warning" id="fat_summary">Fat: 135.7</p>
-            </div>
-            <div class="col-md-12 align-self-center p-0 text-left">
-              <p class="p-1 m-1 bg-success" id="carbs_summary">Carbs:15.7</p>
-            </div>
-            <div class="col-md-12 align-self-center p-0 text-left">
-              <p class="p-1 m-1 bg-faded" id="calories_summary">Calories:15.7</p>
             </div>
           </div>
         </div>

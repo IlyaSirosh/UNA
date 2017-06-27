@@ -78,7 +78,7 @@ $(function () {
         meals.forEach(function (meal)
         {
             var mealCopy = $mealTemplate.clone();
-            mealCopy.find($(".calories")).text("-1");
+            mealCopy.find($(".fat")).text("-1");
             mealCopy.find($(".name")).text(meal.name);
             $("#main_container").append(mealCopy);
             mealCopy.show();
@@ -293,11 +293,13 @@ $(function () {
     $loginButton.click(function (event) {
         event.preventDefault();
 
-        var $form = $(this);
+
         var formData = {
-            username: $form.find("#username_field").val(),
-            password: $form.find('#password_field').val()
+            username: $login.find("#username_field").val(),
+            password: $login.find('#password_field').val()
         };
+
+        console.log(formData.username + " " + formData.password)
 
         doLogin(formData);
     });

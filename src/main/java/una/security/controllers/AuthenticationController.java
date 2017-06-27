@@ -43,6 +43,8 @@ public class AuthenticationController {
     @PostMapping
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) {
 
+        System.out.println("User "+authenticationRequest.getUsername()+"  "+authenticationRequest.getPassword());
+
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                                                             authenticationRequest.getUsername(),
                                                             authenticationRequest.getPassword());

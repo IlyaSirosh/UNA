@@ -10,17 +10,12 @@ $(function () {
     var $logout = $("#logout_button");
     var $login = $("#login_form");
     var $dailyPlanButton = $("#daily_plan_button");
-    var $dailyPlanPage = $("");
     var $mainContainer = $("#main_container");
-    var $protein = $(".protein");
-    var $fat = $(".fat");
-    var $carbs = $(".carbs");
-    var $calories = $(".calories");
     var $nutritionalSummary = $("#nutritional_summary");
     var $proteinSummary = $("#protein_summary");
-    var $proteinSummary = $("#fat_summary");
-    var $proteinSummary = $("#carbs_summary_summary");
-    var $proteinSummary = $("#calories_summary");
+    var $fatSummary = $("#fat_summary");
+    var $carbsSummary = $("#carbs_summary_summary");
+    var $caloriesSummary = $("#calories_summary");
     var $mealTemplate = $("#meal_template");
     var $customDishTemplate = $("#custom_dish_template");
     var $customDishTemplate = $("#template_dish_template");
@@ -343,10 +338,10 @@ $(function () {
             calorieSum += Number(row.find($(".calories")).text());
         })
 
-        $nutritionalSummary.find($("#protein_summary")).text(proteinSum);
-        $nutritionalSummary.find($("#fat_summary")).text(fatSum);
-        $nutritionalSummary.find($("#carbs_summary")).text(carbsSum);
-        $nutritionalSummary.find($("#calories_summary")).text(calorieSum);
+        $proteinSummary.text(proteinSum);
+        $fatSummary.text(fatSum);
+        $carbsSummary.text(carbsSum);
+        $caloriesSummary.text(calorieSum);
         $nutritionalSummary.show()
     }
 
